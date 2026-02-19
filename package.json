@@ -1,0 +1,58 @@
+{
+  "name": "nuclear-plugin-deezer-dashboard",
+  "version": "0.1.0",
+  "description": "Deezer dashboard provider for Nuclear music player — top charts, trending artists, editorial playlists, and new releases",
+  "author": "nukeop",
+  "license": "AGPL-3.0-only",
+  "main": "src/index.ts",
+  "type": "module",
+  "nuclear": {
+    "displayName": "Deezer",
+    "category": "discovery",
+    "icon": {
+      "type": "link",
+      "link": "https://e-cdns-files.dzcdn.net/cache/images/common/favicon/favicon-96x96.b77d1bf2206a2f20a5ab.png"
+    },
+    "permissions": []
+  },
+  "keywords": [
+    "nuclear",
+    "plugin",
+    "deezer",
+    "dashboard",
+    "charts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NuclearPlayer/nuclear-plugin-deezer-dashboard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NuclearPlayer/nuclear-plugin-deezer-dashboard/issues"
+  },
+  "scripts": {
+    "lint": "eslint 'src/**/*.ts' eslint.config.ts",
+    "lint:fix": "eslint 'src/**/*.ts' eslint.config.ts --fix",
+    "format": "prettier --write 'src/**/*.ts'",
+    "format:check": "prettier --check 'src/**/*.ts'"
+  },
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "dependencies": {
+    "@nuclearplayer/plugin-sdk": "2.1.1"
+  },
+  "packageManager": "pnpm@10.16.1",
+  "devDependencies": {
+    "@eslint/js": "^10.0.0",
+    "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
+    "eslint": "10.0.0-rc.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "globals": "^17.3.0",
+    "jiti": "^2.6.1",
+    "prettier": "^3.8.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "8.54.1-alpha.5"
+  }
+}
