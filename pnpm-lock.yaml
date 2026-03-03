@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@nuclearplayer/plugin-sdk':
-        specifier: 2.1.1
-        version: 2.1.1(react@18.3.1)
+        specifier: 2.3.0
+        version: 2.3.0(react@18.3.1)
     devDependencies:
       '@eslint/js':
         specifier: ^10.0.0
@@ -176,8 +176,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@nuclearplayer/plugin-sdk@2.1.1':
-    resolution: {integrity: sha512-kz0Bmb/vuWU9bRCXbQ3ROps1owOFG3eXZt2EHguYII3xLEUPYyiib0VBNuKhUaaPod3GRoYDx1z1HHwDJc8fRA==}
+  '@nuclearplayer/plugin-sdk@2.3.0':
+    resolution: {integrity: sha512-KT9LLIYkLmZSAIWmJBLUXHB9O8si1VqDTPMU/T2k18UvagCui6SwR9PzlfW/ru1hPHPUM1ijSocxsPUaxDkOqg==}
     peerDependencies:
       react: ^18.3.1
 
@@ -722,7 +722,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@nuclearplayer/plugin-sdk@2.1.1(react@18.3.1)':
+  '@nuclearplayer/plugin-sdk@2.3.0(react@18.3.1)':
     dependencies:
       class-variance-authority: 0.7.1
       clsx: 2.1.1

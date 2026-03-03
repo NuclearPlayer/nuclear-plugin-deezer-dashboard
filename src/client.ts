@@ -6,6 +6,7 @@ import type {
   DeezerArtistSummary,
   DeezerEditorialCharts,
   DeezerEditorialRelease,
+  DeezerPlaylistFull,
   DeezerTrack,
 } from './types';
 
@@ -49,4 +50,28 @@ export class DeezerClient {
   ): Promise<DeezerEditorialRelease[]> {
     return this.#getList(`/editorial/0/releases?limit=${limit}`);
   }
+
+  async getPlaylist(url: string): Promise<DeezerPlaylistFull> {
+    const id = extractPlaylistId(url);
+    return this.#get<DeezerPlaylistFull>(`/playlist/${id}`);
+  }
 }
+
+const extractPlaylistId = (url: string): string => {
+  const parsed = new URL(url);
+  const segments = parsed.pathname.split('/').filter(Boolean);
+  const playlistIndex = segments.indexOf('playlist');
+  return segments[playlistIndex + 1];
+};
+
+export const isPlaylistUrl = (url: string): boolean => {
+  try {
+    const parsed = new URL(url);
+    return (
+      parsed.hostname === 'www.deezer.com' &&
+      /^\/([\w-]+\/)?playlist\/\d+/.test(parsed.pathname)
+    );
+  } catch {
+    return false;
+  }
+};

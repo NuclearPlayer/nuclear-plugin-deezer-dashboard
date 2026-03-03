@@ -40,7 +40,7 @@
     "README.md"
   ],
   "dependencies": {
-    "@nuclearplayer/plugin-sdk": "2.1.1"
+    "@nuclearplayer/plugin-sdk": "2.3.0"
   },
   "packageManager": "pnpm@10.16.1",
   "devDependencies": {

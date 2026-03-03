@@ -26,6 +26,7 @@ export type DeezerTrack = {
   position: number;
   duration: number;
   preview: string;
+  time_add?: number;
   artist: DeezerArtistSummary;
   album: {
     id: number;
@@ -66,6 +67,18 @@ export type DeezerEditorialRelease = {
 export type DeezerPaginatedResponse<T> = {
   data: T[];
   total?: number;
+};
+
+export type DeezerPlaylistFull = {
+  id: number;
+  title: string;
+  description: string;
+  creation_date: string;
+  picture_medium: string;
+  picture_big: string;
+  picture_xl: string;
+  nb_tracks: number;
+  tracks: { data: DeezerTrack[] };
 };
 
 export type DeezerEditorialCharts = {

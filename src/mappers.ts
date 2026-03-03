@@ -1,6 +1,8 @@
 import type {
   AlbumRef,
   ArtistRef,
+  Playlist,
+  PlaylistItem,
   PlaylistRef,
   Track,
 } from '@nuclearplayer/plugin-sdk';
@@ -10,6 +12,7 @@ import type {
   DeezerArtistSummary,
   DeezerEditorialRelease,
   DeezerPlaylist,
+  DeezerPlaylistFull,
   DeezerTrack,
 } from './types';
 
@@ -104,3 +107,42 @@ export const mapDeezerRelease = (
   artwork: albumArtwork(release),
   source: deezerSource(release.id),
 });
+
+const playlistArtwork = (playlist: {
+  picture_big: string;
+  picture_medium: string;
+}) => ({
+  items: [
+    { url: playlist.picture_big, purpose: 'cover' as const },
+    { url: playlist.picture_medium, purpose: 'thumbnail' as const },
+  ],
+});
+
+const trackAddedAtIso = (track: DeezerTrack, fallback: string): string =>
+  track.time_add ? new Date(track.time_add * 1000).toISOString() : fallback;
+
+export const mapDeezerFullPlaylistToPlaylist = (
+  playlist: DeezerPlaylistFull,
+): Playlist => {
+  const createdAtIso = new Date(
+    playlist.creation_date.replace(' ', 'T') + 'Z',
+  ).toISOString();
+
+  const items: PlaylistItem[] = playlist.tracks.data.map((track) => ({
+    id: String(track.id),
+    addedAtIso: trackAddedAtIso(track, createdAtIso),
+    track: mapDeezerTrack(track),
+  }));
+
+  return {
+    id: String(playlist.id),
+    name: playlist.title,
+    description: playlist.description || undefined,
+    artwork: playlistArtwork(playlist),
+    createdAtIso,
+    lastModifiedIso: createdAtIso,
+    origin: deezerSource(playlist.id),
+    isReadOnly: true,
+    items,
+  };
+};
